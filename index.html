@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fluxwave — a native front end for the ComfyUI server you already run</title>
+<meta name="description" content="Fluxwave is a native Mac, iPhone and iPad client for your own ComfyUI server. One-tap templates, a before/after slider, batch runs and 4K upscales.">
+<style>
+:root{--night:#0a0a0c;--plate:#131318;--ink:#f2f2f5;--dim:#8b8b97;--line:#232329;--wave:#7c5cff;--hot:#ff6b9d}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--night);color:var(--ink);font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.top{padding:74px 0 0;text-align:center}
+.mark{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--dim);font-weight:600}
+.mark i{width:28px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--wave),var(--hot))}
+h1{margin:22px auto 0;max-width:15ch;font-size:clamp(33px,6.4vw,62px);line-height:1.04;letter-spacing:-.035em;font-weight:700;padding:0 24px}
+.lede{margin:20px auto 0;max-width:52ch;color:var(--dim);font-size:18px;padding:0 24px}
+.cta{margin-top:32px}
+.btn{display:inline-block;padding:14px 30px;border-radius:12px;background:linear-gradient(100deg,var(--wave),var(--hot));
+ color:#fff;font-weight:650;text-decoration:none;font-size:15.5px}
+/* the before/after plate — pure CSS, no images needed */
+.plate{margin:66px auto 0;max-width:52rem;padding:0 24px}
+.ba{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/9}
+.ba .before,.ba .after{position:absolute;inset:0}
+.ba .before{background:
+  radial-gradient(60% 80% at 30% 40%,#4a4a52,transparent 70%),
+  linear-gradient(140deg,#2a2a30,#3c3c44);filter:saturate(.25) contrast(.85)}
+.ba .after{clip-path:inset(0 0 0 52%);
+ background:
+  radial-gradient(60% 80% at 30% 40%,rgba(124,92,255,.85),transparent 70%),
+  radial-gradient(50% 70% at 78% 62%,rgba(255,107,157,.75),transparent 70%),
+  linear-gradient(140deg,#1d1440,#43195c)}
+.ba .bar{position:absolute;top:0;bottom:0;left:52%;width:2px;background:#fff;opacity:.9}
+.ba .bar::after{content:"";position:absolute;top:50%;left:50%;width:38px;height:38px;translate:-50% -50%;
+ border-radius:50%;background:#fff;box-shadow:0 2px 18px rgba(0,0,0,.5)}
+.ba .lbl{position:absolute;bottom:14px;font:600 11px/1 ui-monospace,Menlo,monospace;letter-spacing:.2em;
+ text-transform:uppercase;color:#fff;background:rgba(0,0,0,.45);padding:7px 11px;border-radius:7px;backdrop-filter:blur(6px)}
+.ba .l1{left:14px}.ba .l2{right:14px}
+.cap{margin-top:14px;text-align:center;color:var(--dim);font-size:13.5px}
+.wrap{max-width:52rem;margin:0 auto;padding:0 24px}
+section{padding:82px 0;border-top:1px solid var(--line);margin-top:82px}
+section:first-of-type{margin-top:0}
+h2{font-size:clamp(23px,3.8vw,32px);letter-spacing:-.03em;font-weight:700;margin-bottom:14px}
+p.sub{color:var(--dim);max-width:58ch;margin-bottom:34px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.grid div{background:var(--plate);padding:24px}
+.grid b{display:block;font-weight:650;margin-bottom:6px;font-size:16px}
+.grid span{color:var(--dim);font-size:14.5px}
+.steps{counter-reset:s;list-style:none}
+.steps li{counter-increment:s;padding:20px 0 20px 58px;border-bottom:1px solid var(--line);position:relative;color:var(--dim)}
+.steps li:last-child{border-bottom:0}
+.steps li::before{content:counter(s);position:absolute;left:0;top:18px;width:32px;height:32px;border-radius:50%;
+ display:grid;place-items:center;background:var(--plate);border:1px solid var(--line);
+ font:700 13px ui-monospace,Menlo,monospace;color:var(--wave)}
+.steps b{color:var(--ink);font-weight:650}
+.frank{border:1px solid var(--line);border-left:3px solid var(--hot);border-radius:12px;padding:26px;background:var(--plate)}
+.frank b{font-size:16.5px}
+.frank ul{margin:14px 0 0 20px;color:var(--dim)}
+.frank li{margin-bottom:9px;font-size:15px}
+a{color:var(--wave)}
+footer{border-top:1px solid var(--line);padding:34px 24px 70px;text-align:center;color:var(--dim);font-size:13.5px}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="mark"><i></i>Fluxwave<i></i></div>
+  <h1>Your ComfyUI server, finally with a front end you enjoy.</h1>
+  <p class="lede">A native app for Mac, iPhone and iPad that talks to the server you already run. One tap runs a template; the result arrives with a before/after slider you can drag.</p>
+  <div class="cta"><a class="btn" href="https://apps.apple.com/app/id6789510342">Get Fluxwave</a></div>
+</div>
+
+<div class="plate">
+  <div class="ba">
+    <div class="before"></div><div class="after"></div><div class="bar"></div>
+    <div class="lbl l1">Before</div><div class="lbl l2">After</div>
+  </div>
+  <p class="cap">Every result opens on the slider. Drag it, then export the comparison as a video.</p>
+</div>
+
+<div class="wrap">
+
+<section>
+  <h2>It is a client, not a service</h2>
+  <p class="sub">This is the part to understand before you install it. Fluxwave does not generate anything and does not own a GPU. It sends a workflow to <b style="color:var(--ink)">a ComfyUI server that belongs to you</b> and shows you what comes back. If your server is off, Fluxwave does nothing at all.</p>
+  <ol class="steps">
+    <li><b>You already run ComfyUI</b> — on a desktop in the next room, a workstation at the office, or a box you rent.</li>
+    <li><b>You point Fluxwave at it</b> once, by address. No account, no sign-up, no relay of mine in between.</li>
+    <li><b>You tap a template.</b> Fluxwave builds the graph, submits the job and tracks it.</li>
+    <li><b>The result comes back</b> into a proper library, with the slider, ready to save or share.</li>
+  </ol>
+</section>
+
+<section>
+  <h2>The templates</h2>
+  <p class="sub">Each one is a ComfyUI graph you would otherwise wire by hand, reduced to a single tap — and each only does what the models installed on your own server can do.</p>
+  <div class="grid">
+    <div><b>Anime &amp; cartoon</b><span>Turn a portrait into an illustrated style, with strength you control.</span></div>
+    <div><b>Restore</b><span>Repair faded, scratched and low-resolution photographs.</span></div>
+    <div><b>4K upscale</b><span>Enlarge with detail reconstruction instead of interpolation.</span></div>
+    <div><b>Background swap</b><span>Clean cutouts, and a new backdrop behind the subject.</span></div>
+    <div><b>Stickers</b><span>Subject isolated, outlined and exported ready to use.</span></div>
+    <div><b>Batch</b><span>Queue a folder and walk away; results land as they finish.</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>Native everywhere, for real</h2>
+  <p class="sub">Not one web view stretched across five devices. On the Mac it is a document-shaped app with a proper library, drag-and-drop in and out, and the full window in use. On iPhone and iPad it is a touch app that respects the keyboard and the pencil. There are builds for Apple TV and Vision Pro too.</p>
+</section>
+
+<section>
+  <h2>What it costs</h2>
+  <p class="sub">Free covers connecting your server, three basic templates and the on-device basics — enough to know whether it fits how you work. Premium adds the full template pack, batch processing, the 4K upscale, the model manager and the before/after export video. It is sold monthly, annually with a seven-day trial, or once as a Lifetime purchase; prices are shown in the app in your own currency.</p>
+  <div class="frank">
+    <b>Honest about the limits</b>
+    <ul>
+      <li><b>No server, no app.</b> There is no cloud tier and no credits to buy. If you do not run ComfyUI, Fluxwave has nothing to talk to — please do not buy it hoping otherwise.</li>
+      <li><b>Quality is your server's.</b> The checkpoints, LoRAs and VRAM are yours. A template cannot outrun the models you installed.</li>
+      <li><b>Speed is your server's too.</b> Fluxwave shows the real queue and the real progress; it cannot make a job finish sooner.</li>
+      <li><b>No account, no sync.</b> Your library is local to each device.</li>
+    </ul>
+  </div>
+</section>
+
+</div>
+<footer>
+  <a href="support.html">Support</a> &middot; <a href="privacy.html">Privacy</a> &middot;
+  <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use</a><br><br>
+  © 2026 Hugo Moriceau &middot; hugomoriceau@icloud.com
+</footer>
+</body></html>

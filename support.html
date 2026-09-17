@@ -2,50 +2,79 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Fluxwave — Support</title>
-<!-- social share (og/twitter) -->
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Hugo Moriceau">
-<meta property="og:title" content="Fluxwave — Support">
-<meta property="og:description" content="Turn your own ComfyUI server into a one-tap AI image studio on your Apple devices.">
-<meta property="og:url" content="https://lastoneparis.github.io/fluxwave-site/support.html">
-<meta property="og:image" content="https://lastoneparis.github.io/fluxwave-site/share.png">
-<meta property="og:image:secure_url" content="https://lastoneparis.github.io/fluxwave-site/share.png">
-<meta property="og:image:type" content="image/png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Fluxwave — Support">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Fluxwave — Support">
-<meta name="twitter:description" content="Turn your own ComfyUI server into a one-tap AI image studio on your Apple devices.">
-<meta name="twitter:image" content="https://lastoneparis.github.io/fluxwave-site/share.png">
-
 <style>
-  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;max-width:720px;margin:0 auto;padding:32px 20px;line-height:1.6;color:#1c1c1e}
-  h1{font-size:1.8rem} h2{font-size:1.15rem;margin-top:1.6rem} a{color:#c026a8}
-  @media(prefers-color-scheme:dark){body{background:#000;color:#e5e5ea}}
+:root{--night:#0a0a0c;--plate:#131318;--ink:#f2f2f5;--dim:#8b8b97;--line:#232329;--wave:#7c5cff;--hot:#ff6b9d}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--night);color:var(--ink);font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:46rem;margin:0 auto;padding:70px 24px 80px}
+.mark{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--dim);font-weight:600}
+.mark i{width:28px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--wave),var(--hot))}
+h1{margin:20px 0 12px;font-size:clamp(29px,5.4vw,42px);letter-spacing:-.032em;font-weight:700}
+.lede{color:var(--dim);max-width:56ch}
+.mail{margin-top:30px;padding:22px 24px;border-radius:13px;background:var(--plate);border:1px solid var(--line);border-left:3px solid var(--wave)}
+.mail a{font-size:19px;font-weight:700;color:var(--wave);text-decoration:none;word-break:break-all}
+.mail p{margin-top:9px;color:var(--dim);font-size:15px}
+h2{margin:56px 0 4px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--hot);font-weight:700}
+dt{font-weight:650;margin-top:26px;font-size:16.5px}
+dd{color:var(--dim);margin-top:6px;font-size:15.5px}
+code{font:13px ui-monospace,Menlo,monospace;background:var(--plate);padding:2px 7px;border-radius:6px;color:var(--ink)}
+p{color:var(--dim);margin-bottom:13px}
+b{color:var(--ink)}
+a{color:var(--wave)}
+footer{border-top:1px solid var(--line);margin-top:70px;padding-top:28px;color:var(--dim);font-size:13.5px}
 </style>
 </head>
-<body>
-<h1>Fluxwave Support</h1>
-<p>Fluxwave turns your own ComfyUI server into a one-tap AI image studio on your Apple devices.</p>
+<body><div class="wrap">
+<div class="mark"><i></i>Fluxwave support<i></i></div>
+<h1>Most problems are the connection.</h1>
+<p class="lede">Fluxwave is a client for a server you run, so almost everything that goes wrong is between the app and that server. Start at the top of this list — it is ordered by how often each cause turns out to be the real one.</p>
 
-<h2>Getting started</h2>
-<ol>
-  <li>In <strong>Settings → Servers</strong>, add your ComfyUI server URL and access token.</li>
-  <li>Pick a template (e.g. Selfie → Anime, Restore Old Photo), add a prompt or photo, and run it.</li>
-  <li>Compare the result with the before/after slider and save or share it.</li>
-</ol>
+<div class="mail">
+  <a href="mailto:hugomoriceau@icloud.com?subject=Fluxwave%20support">hugomoriceau@icloud.com</a>
+  <p>Tell me your device and OS version, your ComfyUI version, the address you entered, and the exact error. If a job failed on the server, the ComfyUI console output is the single most useful thing you can paste.</p>
+</div>
 
-<h2>Frequently asked</h2>
-<p><strong>Do I need a server?</strong> Yes — Fluxwave is a client for your own ComfyUI server (local or cloud). You run and pay for that compute.</p>
-<p><strong>Is my content private?</strong> Yes — prompts and images go straight to your server. See our <a href="privacy.html">Privacy Policy</a>.</p>
-<p><strong>What does Premium add?</strong> The full premium template pack, batch, 4K upscale, model manager and before/after export video.</p>
-<p><strong>Restore a purchase?</strong> Settings → Restore Purchases.</p>
+<h2>Connecting</h2>
+<dl>
+  <dt>"Cannot reach server"</dt>
+  <dd>Check, in this order: ComfyUI is actually running; it is listening on the network rather than only on itself (start it with <code>--listen</code>, otherwise it binds to <code>127.0.0.1</code> and nothing else on your network can see it); your device is on the same network; and the machine's firewall allows the port — <code>8188</code> by default.</dd>
+  <dt>I typed localhost and it did not work.</dt>
+  <dd>On your phone, <code>localhost</code> is the phone. Use the server machine's address on your network, for example <code>http://192.168.1.20:8188</code>.</dd>
+  <dt>It works at home but not on cellular.</dt>
+  <dd>A private address is only reachable from your own network. Reaching it from outside needs a VPN back to your network or a tunnel you set up yourself. Fluxwave deliberately has no relay in the middle — that is the privacy trade, and it is the right one.</dd>
+  <dt>It connects, then drops during long jobs.</dt>
+  <dd>Progress comes over a websocket. A reverse proxy in front of ComfyUI often closes idle upgrades — raise the read timeout and allow upgrades. If you connect directly, keep the device awake for very long renders.</dd>
+</dl>
 
-<h2>Contact</h2>
-<p>Email: <a href="mailto:hugomoriceau@icloud.com">hugomoriceau@icloud.com</a><br>Phone: +41 77 280 38 32</p>
-<p><a href="privacy.html">Privacy Policy</a> · <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use (EULA)</a></p>
-</body>
-</html>
+<h2>Jobs and results</h2>
+<dl>
+  <dt>"Model not found" / a node is missing</dt>
+  <dd>The template asks for a checkpoint, LoRA or custom node your server does not have installed. Install it in ComfyUI and restart the server; Fluxwave cannot supply models, it can only ask for them.</dd>
+  <dt>Out of memory</dt>
+  <dd>That is your GPU. Use a smaller resolution or fewer batch items, and close other things using VRAM. The 4K upscale is by far the heaviest template.</dd>
+  <dt>The result looks nothing like the example.</dt>
+  <dd>Results come entirely from the models on your server. A different checkpoint gives a different look for the same template — that is expected, not a bug.</dd>
+  <dt>A job is stuck in the queue.</dt>
+  <dd>Check the ComfyUI console. If the server is waiting or has errored, Fluxwave shows you what it reports. Cancelling in the app cancels on the server.</dd>
+  <dt>Where are my images saved?</dt>
+  <dd>In the app's library on the device, and in your photo library if you save them there. They are also written by ComfyUI on the server as usual.</dd>
+</dl>
+
+<h2>Purchases</h2>
+<dl>
+  <dt>Premium is locked after paying.</dt>
+  <dd>Settings &rsaquo; <b>Restore Purchases</b>, then relaunch, signed in to the Apple Account that paid. A Mac and an iPhone share the purchase when both use the same Apple Account.</dd>
+  <dt>Cancelling</dt>
+  <dd><b>Settings &rsaquo; your name &rsaquo; Subscriptions</b> on iOS, or <b>App Store &rsaquo; Account &rsaquo; Settings</b> on the Mac.</dd>
+  <dt>Refunds</dt>
+  <dd>Apple issues them, at <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>. If you bought it without a ComfyUI server and it is therefore useless to you, say so in the request — it is a fair reason.</dd>
+</dl>
+
+<footer>
+  <a href="index.html">Fluxwave</a> &middot; <a href="privacy.html">Privacy</a> &middot;
+  <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use</a><br><br>
+  © 2026 Hugo Moriceau &middot; hugomoriceau@icloud.com
+</footer>
+</div></body></html>

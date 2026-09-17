@@ -2,55 +2,66 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Fluxwave — Privacy Policy</title>
-<!-- social share (og/twitter) -->
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Hugo Moriceau">
-<meta property="og:title" content="Fluxwave — Privacy Policy">
-<meta property="og:description" content="Turn your own ComfyUI server into a one-tap AI image studio on your Apple devices.">
-<meta property="og:url" content="https://lastoneparis.github.io/fluxwave-site/privacy.html">
-<meta property="og:image" content="https://lastoneparis.github.io/fluxwave-site/share.png">
-<meta property="og:image:secure_url" content="https://lastoneparis.github.io/fluxwave-site/share.png">
-<meta property="og:image:type" content="image/png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Fluxwave — Privacy Policy">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Fluxwave — Privacy Policy">
-<meta name="twitter:description" content="Turn your own ComfyUI server into a one-tap AI image studio on your Apple devices.">
-<meta name="twitter:image" content="https://lastoneparis.github.io/fluxwave-site/share.png">
-
 <style>
-  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;max-width:720px;margin:0 auto;padding:32px 20px;line-height:1.6;color:#1c1c1e}
-  h1{font-size:1.8rem} h2{font-size:1.2rem;margin-top:2rem} a{color:#c026a8}
-  @media(prefers-color-scheme:dark){body{background:#000;color:#e5e5ea}}
+:root{--night:#0a0a0c;--plate:#131318;--ink:#f2f2f5;--dim:#8b8b97;--line:#232329;--wave:#7c5cff;--hot:#ff6b9d}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--night);color:var(--ink);font:16px/1.72 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:44rem;margin:0 auto;padding:70px 24px 80px}
+.mark{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--dim);font-weight:600}
+.mark i{width:28px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--wave),var(--hot))}
+h1{margin:20px 0 6px;font-size:clamp(27px,5vw,38px);letter-spacing:-.03em;font-weight:700}
+.when{color:var(--dim);font:13px ui-monospace,Menlo,monospace}
+h2{margin:44px 0 12px;font-size:18px;font-weight:650;letter-spacing:-.02em}
+p{color:var(--dim);margin-bottom:13px}
+ul{margin:0 0 13px 22px;color:var(--dim)}li{margin-bottom:7px}
+b{color:var(--ink)}a{color:var(--wave)}
+.box{border:1px solid var(--line);border-left:3px solid var(--hot);border-radius:12px;padding:20px 22px;background:var(--plate);margin:8px 0 16px}
+footer{border-top:1px solid var(--line);margin-top:62px;padding-top:28px;color:var(--dim);font-size:13.5px}
 </style>
 </head>
-<body>
-<h1>Fluxwave Privacy Policy</h1>
-<p><em>Last updated: 9 July 2026</em></p>
+<body><div class="wrap">
+<div class="mark"><i></i>Privacy policy<i></i></div>
+<h1>Fluxwave</h1>
+<p class="when">Last updated 17 September 2026 · Data controller: Hugo Moriceau, France</p>
 
-<p>Fluxwave is an AI image studio that connects to <strong>your own</strong> image-generation server (ComfyUI). <strong>We host nothing and we do not collect, store, or transmit your images or prompts to our own servers.</strong></p>
+<h2>The short version</h2>
+<p>Fluxwave has no servers, no account and no sign-in. <b>I receive no personal data from this app at all.</b> Your photos go from your device to the ComfyUI server you configured, and nowhere else.</p>
 
-<h2>What stays on your device</h2>
-<ul>
-  <li><strong>Server address & access token</strong> — stored only in your device Keychain. They are used to talk directly to the server you choose.</li>
-  <li><strong>Prompts and generated images</strong> — sent directly from your device to your own server, and saved locally / to your Photos when you choose. Fluxwave never receives them.</li>
-</ul>
+<h2>Your images</h2>
+<div class="box">
+  <p style="margin:0">A photo you process is sent <b>directly from your device to the address you entered</b>, over your own network. There is no intermediary of mine, no relay, no queue in the cloud, and no copy retained anywhere I control — because I control nothing in this path.</p>
+</div>
+<p>Because the destination is a machine you chose, what happens to an image after it arrives is determined by how you run that machine. ComfyUI writes output files to its own disk in the ordinary way. If the server belongs to someone else, or you rent it, their access and their terms apply — choose it with that in mind.</p>
 
-<h2>Content & safety</h2>
-<p>Fluxwave includes a safety filter and in-app reporting/blocking. You are responsible for the content you generate on your own server. Do not create content that is illegal or that depicts real people without consent. The app is rated 17+.</p>
+<h2>Photo library access</h2>
+<p>To pick a photo, the app asks iOS or macOS for access to your library. The permission is used to read the images you select and, if you choose to save a result, to write it back. The app does not scan your library, does not index it and does not send anything from it anywhere except to your own server when you explicitly run a job. You can withdraw the permission at any time in the system privacy settings.</p>
 
-<h2>Data we collect</h2>
-<p><strong>None.</strong> No analytics servers, no account system.</p>
+<h2>Server address</h2>
+<p>The address of your ComfyUI server, and any credential you attach to it, are stored on the device — the credential in the Keychain. They are used to reach your server and are not transmitted anywhere else.</p>
+
+<h2>On-device processing</h2>
+<p>Some basics use Apple's Vision framework, which runs locally on your hardware. Nothing about that leaves the device.</p>
 
 <h2>Purchases</h2>
-<p>Subscriptions and purchases are handled by Apple. We receive no payment information.</p>
+<p>Fluxwave Premium is sold and processed entirely by <b>Apple</b> through the App Store. I never see your name, your payment method or your Apple Account. The app asks StoreKit whether an entitlement is active on this device and receives yes or no.</p>
 
-<h2>Contact</h2>
-<p>Email: <a href="mailto:hugomoriceau@icloud.com">hugomoriceau@icloud.com</a></p>
+<h2>Analytics and advertising</h2>
+<p>There are none. No advertising SDK, no crash reporter, no attribution SDK, no telemetry, no third-party analytics library of any kind. Fluxwave does not ask for the App Tracking Transparency permission because it has nothing to track. I do not know how many images you have processed, or whether you have opened the app since installing it.</p>
 
-<p><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use (EULA)</a></p>
-</body>
-</html>
+<h2>Children</h2>
+<p>Fluxwave is not directed at children under 13 and collects no personal data from anyone of any age.</p>
+
+<h2>Your rights</h2>
+<p>The GDPR gives you rights of access, rectification, erasure, restriction, portability and objection over personal data a controller holds about you. I hold none from this app, so there is nothing on my side to disclose or erase. Images and results on your own server are under your control; delete them there. Deleting the app removes its local library, its settings and the stored server credential. Questions to <a href="mailto:hugomoriceau@icloud.com">hugomoriceau@icloud.com</a>.</p>
+
+<h2>Changes</h2>
+<p>If this policy changes, the date above changes with it, and the new text is published here before the change ships in an update.</p>
+
+<footer>
+  <a href="index.html">Fluxwave</a> &middot; <a href="support.html">Support</a> &middot;
+  <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use</a><br><br>
+  © 2026 Hugo Moriceau &middot; hugomoriceau@icloud.com
+</footer>
+</div></body></html>
